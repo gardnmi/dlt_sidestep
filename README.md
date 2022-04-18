@@ -65,12 +65,20 @@ pip install in your Databricks Notebook
 
 ### Example Usage
 
+**Note**: You must define a `pipeline_id` variable as `spark.conf.get("pipelines.id", None)`
+
+**Note**: You must define a `g` variable as `globals()`
+`
+
 ```python
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 from dlt_sidestep import SideStep
 
-if spark.conf.get("pipelines.id", None):
+pipeline_id =  spark.conf.get("pipelines.id", None)
+g = globals()
+
+if pipeline_id:
   import dlt
 
 json_path = "/databricks-datasets/wikipedia-datasets/data-001/clickstream/raw-uncompressed-json/2015_2_clickstream.json"
@@ -87,7 +95,7 @@ def clickstream_raw():
     spark.read.option("inferSchema", "true").json(json_path)
   )
 """
-Side_Step(step)
+SideStep(step, pipeline_id, g)
 df = clickstream_raw()
 df.display()
 
@@ -112,7 +120,7 @@ def clickstream_clean():
       .select("current_page_id", "current_page_title", "click_count", "previous_page_id", "previous_page_title")
   )
 """
-Side_Step(step)
+SideStep(step, pipeline_id, g)
 df = clickstream_clean()
 df.display()
 

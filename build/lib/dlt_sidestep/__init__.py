@@ -1,1 +1,1 @@
-from dlt_sidestep.main import Side_Step
+from dlt_sidestep.main import SideStep

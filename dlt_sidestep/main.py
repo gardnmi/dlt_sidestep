@@ -1,16 +1,18 @@
 import re
 
 
-class Side_Step:
+class SideStep:
 
-    def __init__(self, step):
+    def __init__(self, step, pipeline_id, g):
         self.step = step
+        self.pipeline_id = pipeline_id
+        self.g = g
 
-        if spark.conf.get("pipelines.id", None):
-            exec(self.step, globals())
+        if self.pipeline_id:
+            exec(self.step, self.g)
         else:
             self.side_step = self.dlt_removal()
-            exec(self.side_step, globals())
+            exec(self.side_step, self.g)
             print(self.side_step)
 
     def dlt_removal(self):
