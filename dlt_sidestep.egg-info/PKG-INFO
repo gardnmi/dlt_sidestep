@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: dlt-sidestep
-Version: 0.0.2
+Version: 0.0.3
 Summary: A library that helps you build dlt pipelines by side stepping the dlt library and making your code interactive
 Author: Michael Gardner
 Author-email: gardnmi@gmail.com
