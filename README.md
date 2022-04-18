@@ -96,8 +96,10 @@ def clickstream_raw():
   )
 """
 SideStep(step, pipeline_id, g)
-df = clickstream_raw()
-df.display()
+
+if not pipeline_id:
+  df = clickstream_raw()
+  df.display()
 
 
 step = """
@@ -121,8 +123,10 @@ def clickstream_clean():
   )
 """
 SideStep(step, pipeline_id, g)
-df = clickstream_clean()
-df.display()
+
+if not pipeline_id:
+  df = clickstream_clean()
+  df.display()
 
 ```
 
