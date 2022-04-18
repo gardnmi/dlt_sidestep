@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+dlt_sidestep/__init__.py
+dlt_sidestep/main.py
+dlt_sidestep.egg-info/PKG-INFO
+dlt_sidestep.egg-info/SOURCES.txt
+dlt_sidestep.egg-info/dependency_links.txt
+dlt_sidestep.egg-info/top_level.txt

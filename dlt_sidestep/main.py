@@ -15,19 +15,26 @@ class Side_Step:
 
     def dlt_removal(self):
         side_step = self.step[self.step.find('def'):]
+        side_step = side_step.replace("'", '"')
 
         # replacing dlt.read with the step function
-        start = 'dlt.read('
-        end = ')'
-
         while True:
-            result = re.search('%s(.*)%s' % (start, end), side_step)
+            result = re.search('dlt.read\\("(.*)"\\)', side_step)
 
             if result:
-                replace_with = side_step[result.start(
-                    1)+1:result.end(1)-1].replace('"', '') + '()'
-                side_step = side_step.replace(result.group(0), replace_with)
+                side_step = side_step.replace(
+                    result.group(0), result.group(1)+'()')
 
+            else:
+                break
+
+        # replacing LIVE with the step function
+        while True:
+            result = re.search('spark.table\\("LIVE.(.*)"\\)', side_step)
+
+            if result:
+                side_step = side_step.replace(
+                    result.group(0), result.group(1)+'()')
             else:
                 break
 
