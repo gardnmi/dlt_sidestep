@@ -35,7 +35,7 @@
 
 ![Alt Text](https://i.imgur.com/ssA2e1v.png)
 
-An elastic search website built to find code snippets in your databricks instance.
+Delta Live Tables does not allow you to use an interactive cluster which makes developing pipelines frustrating. DLT Sidestep is an attempt to allow for interactive pipeline development without having to duplicate your code in seperate notebooks which lead to errors.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
